@@ -34,3 +34,5 @@ $ goemon export YOUR-TASK-ID --all --dry-run
 
 $ goemon export YOUR-TASK-ID --all
 ```
+
+If you need to perform processing on a shared task ( htpts://goemon.cloud/s/YOUR-SHARED-TASK-ID ), specify the `--shared` option.
