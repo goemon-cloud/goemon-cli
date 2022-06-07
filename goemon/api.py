@@ -46,7 +46,7 @@ class Task(object):
             obj[key] = self.obj.get(key, 'none')
         for key in META_STRING_OR_EMPTY_PROPERTIES:
             obj[key] = self.obj.get(key, '')
-        return yaml.dump(obj)
+        return yaml.dump(obj, allow_unicode=True)
 
     @meta.setter
     def meta(self, value):
@@ -81,7 +81,7 @@ class Task(object):
 
     @property
     def param(self):
-        return yaml.dump(self.obj['param']) if self.obj.get('param', None) is not None else ''
+        return yaml.dump(self.obj['param'], allow_unicode=True) if self.obj.get('param', None) is not None else ''
 
     @param.setter
     def param(self, value):
@@ -92,7 +92,7 @@ class Task(object):
 
     @property
     def paramschema(self):
-        return yaml.dump(self.obj['paramschema']) if self.obj.get('paramschema', None) is not None else ''
+        return yaml.dump(self.obj['paramschema'], allow_unicode=True) if self.obj.get('paramschema', None) is not None else ''
 
     @paramschema.setter
     def paramschema(self, value):
@@ -103,7 +103,7 @@ class Task(object):
 
     @property
     def files(self):
-        files_yaml = yaml.dump([self._get_file_attr(file) for file in self.obj['files']]) \
+        files_yaml = yaml.dump([self._get_file_attr(file) for file in self.obj['files']], allow_unicode=True) \
             if self.obj.get('files', None) is not None else ''
         files_path = [(self.dir_files, file['data']['attributes']['name'])
                       for file in self.obj.get('files', [])]

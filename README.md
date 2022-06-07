@@ -24,13 +24,13 @@ If the URL of your task is `https://goemon.cloud/t/YOUR-TASK-ID`, you can import
 
 Import:
 ```
-$ goemon import 8TdZSZOIOfWsqIpK7oQM --all
+$ goemon import YOUR-TASK-ID --all
 ```
 
 Export:
 ```
 # Check mode: Just display the diff.
-$ goemon export 8TdZSZOIOfWsqIpK7oQM --all --dry-run
+$ goemon export YOUR-TASK-ID --all --dry-run
 
-$ goemon export 8TdZSZOIOfWsqIpK7oQM --all
+$ goemon export YOUR-TASK-ID --all
 ```
