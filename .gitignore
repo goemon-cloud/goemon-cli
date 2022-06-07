@@ -1,0 +1,6 @@
+.DS_Store
+*.egg-info
+.python-version
+*.pyc
+__pycache__
+work
