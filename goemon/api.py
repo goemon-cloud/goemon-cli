@@ -189,12 +189,12 @@ class Task(object):
         if 'type' not in file:
             raise ValueError(f'type is not defined: {file}')
         value = file['type']
-        if not isinstance(value, str):
+        if value is not None and not isinstance(value, str):
             raise ValueError(f'type is not str: {value}')
         if 'importType' not in file:
             raise ValueError(f'importType is not defined: {file}')
         value = file['importType']
-        if not isinstance(value, str):
+        if value is not None and not isinstance(value, str):
             raise ValueError(f'importType is not str: {value}')
         if 'preload' not in file:
             raise ValueError(f'preload is not defined: {file}')
