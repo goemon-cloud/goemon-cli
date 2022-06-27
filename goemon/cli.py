@@ -113,7 +113,9 @@ def get_stream(args, dest, mode, stdstream):
     path = os.path.join(args.base_dir, dest)
     if mode == 'w' and os.path.exists(path) and not args.overwrite:
         raise ValueError(f'File already exists: {path}')
-    return open(path, mode)
+    if mode in ['wb', 'rb']:
+        return open(path, mode)
+    return open(path, mode, encoding='utf8')
 
 def process_import(args, task, prop):
     value = getattr(task, prop)
@@ -138,7 +140,7 @@ def process_files_import(args, task):
     files_yaml = os.path.join(dest_dir, '.files.yml')
     if os.path.exists(files_yaml) and not args.overwrite:
         raise ValueError(f'File already exists: {files_yaml}')
-    with open(files_yaml, 'w') as stream:
+    with open(files_yaml, 'w', encoding='utf8') as stream:
         stream.write(value)
     for src_dir, filepath in files:
         logger.info(f'Copy {filepath}, {src_dir} -> {dest_dir}')
@@ -179,7 +181,7 @@ def process_files_export(args, task):
     if src_dir is None:
         return
     files_yaml_path = os.path.join(src_dir, '.files.yml')
-    with open(files_yaml_path, 'r') as stream:
+    with open(files_yaml_path, 'r', encoding='utf8') as stream:
         files_yaml = stream.read()
     files_path = []
     for file in yaml.load(files_yaml, yaml.SafeLoader):
